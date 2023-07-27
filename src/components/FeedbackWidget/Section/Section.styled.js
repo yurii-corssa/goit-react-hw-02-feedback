@@ -5,5 +5,5 @@ export const Title = styled.h2`
   font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
-  margin: 10px 0 10px 0;
+  padding: 10px 0 10px 0;
 `;

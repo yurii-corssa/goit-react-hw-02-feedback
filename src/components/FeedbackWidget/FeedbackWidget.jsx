@@ -3,6 +3,7 @@ import { Container } from './FeedbackWidget.styled';
 import { Statistics } from './Statistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Section } from './Section/Section';
+import { Notification } from './Notification/Notification';
 
 export class FeedbackWidget extends Component {
   state = {
@@ -35,19 +36,23 @@ export class FeedbackWidget extends Component {
     return (
       <Container>
         <Section
-          title={'Please leave feedback'}
+          title="Please leave feedback"
           children={<FeedbackOptions onLeaveFeedback={this.incrementValue} />}
         />
         <Section
-          title={'Statistics'}
+          title="Statistics"
           children={
-            <Statistics
-              good={good}
-              neutral={neutral}
-              bad={bad}
-              totalFeedback={totalFeedback}
-              positiveFeedbackPercent={positiveFeedbackPercent}
-            />
+            totalFeedback ? (
+              <Statistics
+                good={good}
+                neutral={neutral}
+                bad={bad}
+                totalFeedback={totalFeedback}
+                positiveFeedbackPercent={positiveFeedbackPercent}
+              />
+            ) : (
+              <Notification message="There is no feedback" />
+            )
           }
         />
       </Container>
