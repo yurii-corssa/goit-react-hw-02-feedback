@@ -1,0 +1,36 @@
+import { styled } from 'styled-components';
+
+export const Title = styled.h2`
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 10px 0 10px 0;
+`;
+
+export const List = styled.ul`
+  display: flex;
+  row-gap: 10px;
+  padding: 10px 0 10px 0;
+`;
+
+export const Item = styled.li`
+  width: calc(100% / 3);
+  text-align: center;
+  border-left: 1px solid #ebebeb;
+`;
+
+export const ItemLabel = styled.span`
+  display: block;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #95989a;
+`;
+
+export const ItemValue = styled.span`
+  display: block;
+  font-weight: 700;
+  font-size: 20px;
+`;
