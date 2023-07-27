@@ -10,18 +10,36 @@ export class FeedbackWidget extends Component {
     bad: 0,
   };
 
-  incrementValue = elem => {
+  incrementValue = key => {
     this.setState(prevState => ({
-      [elem]: (prevState[elem] += 1),
+      [key]: (prevState[key] += 1),
     }));
+  };
+
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const value = (this.state.good / this.countTotalFeedback()) * 100;
+    return Math.round(value);
   };
 
   render() {
     const { good, neutral, bad } = this.state;
+    const totalFeedback = this.countTotalFeedback();
+    const positiveFeedbackPercent = this.countPositiveFeedbackPercentage();
     return (
       <Container>
         <Form onIncrementValue={this.incrementValue} />
-        <Statistics good={good} neutral={neutral} bad={bad} />
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          totalFeedback={totalFeedback}
+          positiveFeedbackPercent={positiveFeedbackPercent}
+        />
       </Container>
     );
   }

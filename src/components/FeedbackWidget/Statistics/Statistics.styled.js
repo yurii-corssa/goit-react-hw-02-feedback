@@ -10,12 +10,19 @@ export const Title = styled.h2`
 
 export const List = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   row-gap: 10px;
   padding: 10px 0 10px 0;
 `;
 
-export const Item = styled.li`
+export const StatsItem = styled.li`
   width: calc(100% / 3);
+  text-align: center;
+  border-left: 1px solid #ebebeb;
+`;
+
+export const TotalItem = styled.li`
+  width: calc(100% / 2);
   text-align: center;
   border-left: 1px solid #ebebeb;
 `;

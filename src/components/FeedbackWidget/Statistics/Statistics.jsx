@@ -1,23 +1,41 @@
 import PropTypes from 'prop-types';
-import { List, Item, Title, ItemLabel, ItemValue } from './Statistics.styled';
+import {
+  List,
+  StatsItem,
+  Title,
+  ItemLabel,
+  ItemValue,
+  TotalItem,
+} from './Statistics.styled';
 
-export const Statistics = ({ good, neutral, bad }) => {
+export const Statistics = props => {
+  const { good, neutral, bad, totalFeedback, positiveFeedbackPercent } = props;
   return (
     <>
       <Title>Statistics</Title>
       <List>
-        <Item>
+        <StatsItem>
           <ItemLabel>good</ItemLabel>
           <ItemValue>{good} </ItemValue>
-        </Item>
-        <Item>
+        </StatsItem>
+        <StatsItem>
           <ItemLabel>neutral</ItemLabel>
           <ItemValue>{neutral} </ItemValue>
-        </Item>
-        <Item>
+        </StatsItem>
+        <StatsItem>
           <ItemLabel>bad</ItemLabel>
           <ItemValue>{bad} </ItemValue>
-        </Item>
+        </StatsItem>
+        <TotalItem>
+          <ItemLabel>Total</ItemLabel>
+          <ItemValue>{totalFeedback}</ItemValue>
+        </TotalItem>
+        <TotalItem>
+          <ItemLabel>Positive Feedback</ItemLabel>
+          <ItemValue>
+            {positiveFeedbackPercent ? positiveFeedbackPercent + '%' : 0}
+          </ItemValue>
+        </TotalItem>
       </List>
     </>
   );
