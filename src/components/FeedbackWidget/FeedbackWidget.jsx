@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import { Container } from './FeedbackWidget.styled';
 import { Statistics } from './Statistics/Statistics';
-import { Form } from './Form/Form';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Section } from './Section/Section';
 
 export class FeedbackWidget extends Component {
   state = {
@@ -30,15 +31,24 @@ export class FeedbackWidget extends Component {
     const { good, neutral, bad } = this.state;
     const totalFeedback = this.countTotalFeedback();
     const positiveFeedbackPercent = this.countPositiveFeedbackPercentage();
+
     return (
       <Container>
-        <Form onIncrementValue={this.incrementValue} />
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          totalFeedback={totalFeedback}
-          positiveFeedbackPercent={positiveFeedbackPercent}
+        <Section
+          title={'Please leave feedback'}
+          children={<FeedbackOptions onLeaveFeedback={this.incrementValue} />}
+        />
+        <Section
+          title={'Statistics'}
+          children={
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              totalFeedback={totalFeedback}
+              positiveFeedbackPercent={positiveFeedbackPercent}
+            />
+          }
         />
       </Container>
     );

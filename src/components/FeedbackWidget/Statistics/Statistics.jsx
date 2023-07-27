@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import {
   List,
   StatsItem,
-  Title,
   ItemLabel,
   ItemValue,
   TotalItem,
@@ -11,33 +10,30 @@ import {
 export const Statistics = props => {
   const { good, neutral, bad, totalFeedback, positiveFeedbackPercent } = props;
   return (
-    <>
-      <Title>Statistics</Title>
-      <List>
-        <StatsItem>
-          <ItemLabel>good</ItemLabel>
-          <ItemValue>{good} </ItemValue>
-        </StatsItem>
-        <StatsItem>
-          <ItemLabel>neutral</ItemLabel>
-          <ItemValue>{neutral} </ItemValue>
-        </StatsItem>
-        <StatsItem>
-          <ItemLabel>bad</ItemLabel>
-          <ItemValue>{bad} </ItemValue>
-        </StatsItem>
-        <TotalItem>
-          <ItemLabel>Total</ItemLabel>
-          <ItemValue>{totalFeedback}</ItemValue>
-        </TotalItem>
-        <TotalItem>
-          <ItemLabel>Positive Feedback</ItemLabel>
-          <ItemValue>
-            {positiveFeedbackPercent ? positiveFeedbackPercent + '%' : 0}
-          </ItemValue>
-        </TotalItem>
-      </List>
-    </>
+    <List>
+      <StatsItem>
+        <ItemLabel>good</ItemLabel>
+        <ItemValue>{good} </ItemValue>
+      </StatsItem>
+      <StatsItem>
+        <ItemLabel>neutral</ItemLabel>
+        <ItemValue>{neutral} </ItemValue>
+      </StatsItem>
+      <StatsItem>
+        <ItemLabel>bad</ItemLabel>
+        <ItemValue>{bad} </ItemValue>
+      </StatsItem>
+      <TotalItem>
+        <ItemLabel>Total</ItemLabel>
+        <ItemValue>{totalFeedback}</ItemValue>
+      </TotalItem>
+      <TotalItem>
+        <ItemLabel>Positive Feedback</ItemLabel>
+        <ItemValue>
+          {positiveFeedbackPercent ? positiveFeedbackPercent + '%' : 0}
+        </ItemValue>
+      </TotalItem>
+    </List>
   );
 };
 
