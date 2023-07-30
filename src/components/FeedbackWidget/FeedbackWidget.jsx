@@ -4,6 +4,7 @@ import { Statistics } from './Statistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Section } from './Section/Section';
 import { Notification } from './Notification/Notification';
+import { BtnWrapper } from './FeedbackOptions/FeedbackOptions.styled';
 
 export class FeedbackWidget extends Component {
   state = {
@@ -32,29 +33,31 @@ export class FeedbackWidget extends Component {
     const { good, neutral, bad } = this.state;
     const totalFeedback = this.countTotalFeedback();
     const positiveFeedbackPercent = this.countPositiveFeedbackPercentage();
+    const options = Object.keys(this.state);
 
     return (
       <Container>
-        <Section
-          title="Please leave feedback"
-          children={<FeedbackOptions onLeaveFeedback={this.incrementValue} />}
-        />
-        <Section
-          title="Statistics"
-          children={
-            totalFeedback ? (
-              <Statistics
-                good={good}
-                neutral={neutral}
-                bad={bad}
-                totalFeedback={totalFeedback}
-                positiveFeedbackPercent={positiveFeedbackPercent}
-              />
-            ) : (
-              <Notification message="There is no feedback" />
-            )
-          }
-        />
+        <Section title="Please leave feedback">
+          <BtnWrapper>
+            <FeedbackOptions
+              options={options}
+              onLeaveFeedback={this.incrementValue}
+            />
+          </BtnWrapper>
+        </Section>
+        <Section title="Statistics">
+          {totalFeedback ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              totalFeedback={totalFeedback}
+              positiveFeedbackPercent={positiveFeedbackPercent}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
+        </Section>
       </Container>
     );
   }
