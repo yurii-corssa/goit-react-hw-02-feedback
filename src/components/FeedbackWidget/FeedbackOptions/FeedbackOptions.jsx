@@ -1,13 +1,11 @@
-import { nanoid } from 'nanoid';
 import { Btn } from './FeedbackOptions.styled';
 
-export const FeedbackOptions = ({ options, onLeaveFeedback }) =>
-  options.map(option => {
-    const id = nanoid();
-
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  return options.map(option => {
     return (
-      <Btn key={id} onClick={() => onLeaveFeedback(option)}>
+      <Btn key={option} onClick={() => onLeaveFeedback(option)}>
         {option}
       </Btn>
     );
   });
+};

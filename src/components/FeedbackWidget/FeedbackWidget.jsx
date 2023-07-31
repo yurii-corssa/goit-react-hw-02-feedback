@@ -15,7 +15,7 @@ export class FeedbackWidget extends Component {
 
   incrementValue = key => {
     this.setState(prevState => ({
-      [key]: (prevState[key] += 1),
+      [key]: prevState[key] + 1,
     }));
   };
 
